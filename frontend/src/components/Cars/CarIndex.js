@@ -21,12 +21,11 @@ export default function CarIndex({ personId }) {
       }
     };
     const url =
-      personId === 0 ? `${API}/cars` : `${API}/users/${personId}/cars`;
+      Number(personId) === 0 ? `${API}/cars` : `${API}/users/${personId}/cars`;
     fetchData(url);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [personId]);
   if (isLoading) return <div>Loading...</div>;
-
   const showCars = cars.map((car, i) => {
     return <Car key={i} brand={car.brand} model={car.model} year={car.year} />;
   });
